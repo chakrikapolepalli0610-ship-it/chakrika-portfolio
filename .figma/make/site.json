@@ -1,0 +1,10 @@
+{
+  "description": "Showcase your skills and projects with a modern dark mode portfolio designed for developers and UX designers, enhancing visibility and professional branding.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
