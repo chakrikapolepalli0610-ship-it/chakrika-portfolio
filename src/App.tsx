@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import profilePic from "@/imports/789871665_1663392165343757_4167346055285328557_n-removebg-preview.png";
 
 // ── Icon Components ─────────────────────────────────────────────────────────
 
@@ -333,6 +332,8 @@ function Navbar({ scrolled, activeSection }: { scrolled: boolean; activeSection:
 // ── Hero ─────────────────────────────────────────────────────────────────────
 
 function Hero() {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
       {/* Ambient background */}
@@ -438,11 +439,21 @@ function Hero() {
               {/* Ring border */}
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-violet-500/30 shadow-2xl shadow-violet-500/20"
                 style={{ background: "radial-gradient(circle at 60% 30%, rgba(99,102,241,0.12), rgba(15,23,42,0.8))" }}>
-                <img
-                  src={profilePic}
-                  alt="Polepalli Chakrika — Full-Stack Developer & UX Designer"
-                  className="w-full h-full object-cover object-top scale-110"
-                />
+                {imageError ? (
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-violet-600/20 to-indigo-600/20">
+                    <div className="text-center">
+                      <div className="text-6xl mb-2">👩‍💻</div>
+                      <p className="text-white text-sm font-medium">Polepalli Chakrika</p>
+                    </div>
+                  </div>
+                ) : (
+                  <img
+                    src="/profile.png"
+                    alt="Polepalli Chakrika — Full-Stack Developer & UX Designer"
+                    className="w-full h-full object-cover object-top scale-110"
+                    onError={() => setImageError(true)}
+                  />
+                )}
               </div>
               {/* Floating badge */}
               <div className="absolute -bottom-3 -right-3 bg-[#1E293B] border border-violet-500/30 rounded-2xl px-3.5 py-2 shadow-xl">
